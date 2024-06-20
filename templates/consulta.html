@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Consulta de Usuários</title>
+    <script>
+        function confirmarExclusao(id) {
+            if (confirm('Tem certeza que deseja excluir este usuário?')) {
+                window.location.href = '/excluir/' + id;
+            }
+        }
+        function editar(id) {
+            window.location.href = '/page_editar/' + id;
+        }
+    </script>
+</head>
+<body>
+    <h1>Consulta de Usuários</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>E-mail</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for usuario in usuarios %}
+            <tr>
+                <td>{{ usuario[0] }}</td>
+                <td>{{ usuario[1] }}</td>
+                <td>{{ usuario[2] }}</td>
+                <td>
+                    <button onclick="confirmarExclusao({{ usuario[0] }})">
+                        Excluir
+                    </button>
+                    <button onclick="editar({{ usuario[0] }})">
+                        Editar
+                    </button>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
