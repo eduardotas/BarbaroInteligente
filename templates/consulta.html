@@ -2,10 +2,10 @@
 <html>
 <head>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <title>Consulta de Usuários</title>
+    <title>Consulta de Personagens</title>
     <script>
         function confirmarExclusao(id) {
-            if (confirm('Tem certeza que deseja excluir este usuário?')) {
+            if (confirm('Tem certeza que deseja excluir este Personagem?')) {
                 window.location.href = '/excluir/' + id;
             }
         }
@@ -15,27 +15,29 @@
     </script>
 </head>
 <body>
-    <h1>Consulta de Usuários</h1>
+    <h1>Consulta de Personagens</h1>
     <table>
         <thead>
             <tr>
                 <th>ID</th>
                 <th>Nome</th>
-                <th>E-mail</th>
+                <th>Vida</th>
+                <th>CD</th>
                 <th>Ações</th>
             </tr>
         </thead>
         <tbody>
-            {% for usuario in usuarios %}
+            {% for p in personagem %}
             <tr>
-                <td>{{ usuario[0] }}</td>
-                <td>{{ usuario[1] }}</td>
-                <td>{{ usuario[2] }}</td>
+                <td>{{ p[0] }}</td>
+                <td>{{ p[1] }}</td>
+                <td>{{ p[2] }}</td>
+                <td>{{ p[3] }}</td>
                 <td>
-                    <button onclick="confirmarExclusao({{ usuario[0] }})">
+                    <button onclick="confirmarExclusao({{ p[0] }})">
                         Excluir
                     </button>
-                    <button onclick="editar({{ usuario[0] }})">
+                    <button onclick="editar({{ p[0] }})">
                         Editar
                     </button>
                 </td>

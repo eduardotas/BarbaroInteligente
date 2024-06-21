@@ -1,14 +1,14 @@
 import sqlite3
 
 # Conectar ao banco de dados (ou criar o arquivo se não existir)
-conn = sqlite3.connect('banco_de_dados.db')
+conn = sqlite3.connect('rpg.db')
 
 # Criar a tabela 'usuarios'
-conn.execute('''CREATE TABLE usuarios
+conn.execute('''CREATE TABLE personagens
                 (id INTEGER PRIMARY KEY AUTOINCREMENT,
                  nome TEXT NOT NULL,
-                 email TEXT NOT NULL,
-                 senha TEXT NOT NULL);''')
+                 vida TEXT NOT NULL,
+                 cd TEXT NOT NULL);''')
 
 # Fechar a conexão com o banco de dados
 conn.close()

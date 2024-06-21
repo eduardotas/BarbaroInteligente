@@ -19,7 +19,10 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/consulta">Consulta</a>
-              </li>        
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/batalha">Batalha</a>
+              </li>
             </ul>
           </div>
         </div>
@@ -31,8 +34,7 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Nome</th>
-                    <th scope="col">Vida</th>
-                    <th scope="col">Vida +-</th>
+                    <th scope="col">Vida</th>                    
                     <th scope="col">Action</th>
                 </tr>
                 </thead>
@@ -51,9 +53,7 @@
                             <button class="btn btn-primary btn-sm" onclick="changeHealth(this, 5)">+5</button>
                             <button class="btn btn-primary btn-sm" onclick="changeHealth(this, 10)">+10</button>
                         </div>                        
-                    </td>
-                    <td class="col-1">
-                    </td>
+                    </td>                    
                     <td class="col-1">
                         <button class="btn btn-primary btn-sm btn-up">↑</button>
                         <button class="btn btn-secondary btn-sm btn-down">↓</button>

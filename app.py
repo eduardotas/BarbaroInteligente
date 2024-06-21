@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify, redirect, render_template, url_for
 import sqlite3
 
-db = 'db_usuarios.db'
+db = 'rpg.db'
 
 app = Flask(__name__)
 
@@ -17,18 +17,18 @@ def page_cadastro():
 def consulta():
     conn = sqlite3.connect(db)
     cursor = conn.cursor()
-    cursor.execute('SELECT * FROM usuarios')
-    usuarios = cursor.fetchall()
+    cursor.execute('SELECT * FROM personagens')
+    personagens = cursor.fetchall()
     conn.close()
 
-    return render_template('consulta.html', usuarios=usuarios)
+    return render_template('consulta.html', personagem=personagens)
 
 @app.route('/page_editar/<int:id>', methods=['GET', 'POST'])
 def page_editar(id):    
     # carregar os dados do registro do banco de dados
     with sqlite3.connect(db) as con:
         cur = con.cursor()
-        cur.execute('SELECT * FROM usuarios WHERE id=?', (id,))
+        cur.execute('SELECT * FROM personagens WHERE id=?', (id,))
         data = cur.fetchone()
 
     # renderizar a página de edição com os dados do registro
@@ -45,7 +45,7 @@ def editar():
     # atualizar o registro no banco de dados
     with sqlite3.connect(db) as con:
         cur = con.cursor()
-        cur.execute('UPDATE usuarios SET nome=?, email=?, senha=? WHERE id=?', (nome, email, telefone, id))
+        cur.execute('UPDATE personagens SET nome=?, vida=?, cd=? WHERE id=?', (nome, email, telefone, id))
         con.commit()
 
     # redirecionar para a página de consulta
@@ -56,8 +56,8 @@ def cadastrar():
     dados = request.form
     conn = sqlite3.connect(db)
     cursor = conn.cursor()
-    cursor.execute('INSERT INTO usuarios (nome, email, senha) VALUES (?, ?, ?)',
-                   (dados['nome'], dados['email'], dados['senha']))
+    cursor.execute('INSERT INTO personagens (nome, vida, cd) VALUES (?, ?, ?)',
+                   (dados['nome'], dados['vida'], dados['cd']))
     conn.commit()
     conn.close()
 
@@ -67,7 +67,7 @@ def cadastrar():
 def excluir(id):
     conn = sqlite3.connect(db)
     cursor = conn.cursor()
-    cursor.execute('DELETE FROM usuarios WHERE id=?', (id,))
+    cursor.execute('DELETE FROM personagens WHERE id=?', (id,))
     conn.commit()
     conn.close()
 

@@ -2,19 +2,19 @@
 <html>
 <head>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <title>Cadastro de Usuários</title>
+    <title>Cadastro de Personagem</title>
 </head>
 <body>
-    <h1>Cadastro de Usuários</h1>
+    <h1>Cadastro de Personagem</h1>
     <form method="POST" action="/cadastrar">
         <label for="nome">Nome:</label>
         <input type="text" id="nome" name="nome"><br><br>
 
-        <label for="email">E-mail:</label>
-        <input type="email" id="email" name="email"><br><br>
+        <label for="vida">Vida:</label>
+        <input type="text" id="vida" name="vida"><br><br>
 
-        <label for="senha">Senha:</label>
-        <input type="password" id="senha" name="senha"><br><br>
+        <label for="cd">CD:</label>
+        <input type="text" id="cd" name="cd"><br><br>
 
         <input type="submit" value="Cadastrar">
     </form>
