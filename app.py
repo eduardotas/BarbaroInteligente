@@ -73,9 +73,40 @@ def excluir(id):
 
     return redirect('/consulta')
 
+### BATTLE PAGE ###
 @app.route('/battle')
 def page_battle():
-    return render_template('battle.html')    
+    conn = sqlite3.connect(db)
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM battles')
+    data = cursor.fetchall()
+    conn.close()
+
+    return render_template('battle.html', battles=data)    
+
+@app.route('/registerBattle', methods=['POST'])
+def registerBattle():
+    dados = request.form
+    conn = sqlite3.connect(db)
+    cursor = conn.cursor()
+    cursor.execute('INSERT INTO battles (battle_name) VALUES (?)',
+                   (dados['battleName'],))
+    conn.commit()
+    conn.close()
+
+    return redirect('/battle') 
+
+@app.route('/editBattleChars/<int:id>', methods=['GET', 'POST'])
+def editBattleChars():    
+    conn = sqlite3.connect(db)
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM battles where id = ?',())
+    battle_data = cursor.fetchall()
+    cursor.execute('SELECT * FROM personagens',())
+    char_data = cursor.fetchall()
+    conn.close()
+
+    return render_template('editBattleChars.html', battle=battle_data, chars = char_data)    
 
 if __name__ == '__main__':
     app.run(debug=True)

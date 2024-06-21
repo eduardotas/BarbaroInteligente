@@ -1,22 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-    {% include 'commom_head.html' %}
+    {% include 'commomHead.html' %}
 </head>
 <body>
     {% include 'navbar.html' %}
-    <h1>Battle</h1>
-    <form method="POST" action="/cadastrar">
-        <label for="nome">Nome:</label>
-        <input type="text" id="nome" name="nome"><br><br>
-
-        <label for="vida">Vida:</label>
-        <input type="text" id="vida" name="vida"><br><br>
-
-        <label for="cd">CD:</label>
-        <input type="text" id="cd" name="cd"><br><br>
-
-        <input type="submit" value="Cadastrar">
+    <div class="container">
+        <h1>New Battle</h1>
+    <form method="POST" action="/registerBattle">
+        <div class="mb-3">
+          <label class="form-label">Battle Name</label>
+          <input type="text" class="form-control" id="battleName" name="battleName">          
+        </div>        
+        <button type="submit" value="Cadastrar" class="btn btn-primary">Submit</button>
     </form>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Battle Name</th> 
+            <th scope="col">Actions</th> 
+          </tr>
+        </thead>
+        <tbody>
+        {% for battle in battles %}
+          <tr>            
+            <td>{{ battle[0] }}</td>
+            <td>{{ battle[1] }}</td>
+            <td>
+            <button class="btn btn-primary btn-sm" onclick="editBattleChars({{ battle[0] }})">
+                Edit Chars
+            </button></td>
+          </tr>          
+        {% endfor %}     
+        </tbody>
+      </table>
+    </div>
 </body>
 </html>
