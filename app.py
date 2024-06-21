@@ -73,6 +73,9 @@ def excluir(id):
 
     return redirect('/consulta')
 
+@app.route('/battle')
+def page_battle():
+    return render_template('battle.html')    
 
 if __name__ == '__main__':
     app.run(debug=True)

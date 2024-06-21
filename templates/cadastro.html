@@ -1,22 +1,27 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <title>Cadastro de Personagem</title>
+<head>    
+    {% include 'commom_head.html' %}
 </head>
 <body>
-    <h1>Cadastro de Personagem</h1>
+    {% include 'navbar.html' %}
+    <div class="container">
+        <h1>Cadastro de Personagem</h1>
     <form method="POST" action="/cadastrar">
-        <label for="nome">Nome:</label>
-        <input type="text" id="nome" name="nome"><br><br>
-
-        <label for="vida">Vida:</label>
-        <input type="text" id="vida" name="vida"><br><br>
-
-        <label for="cd">CD:</label>
-        <input type="text" id="cd" name="cd"><br><br>
-
-        <input type="submit" value="Cadastrar">
-    </form>
+        <div class="mb-3">
+          <label class="form-label">Nome</label>
+          <input type="text" class="form-control" id="nome" name="nome">          
+        </div>
+        <div class="mb-3">
+          <label  class="form-label">Vida</label>
+          <input type="number" class="form-control" id="vida" name="vida">
+        </div>
+        <div class="mb-3">
+          <label  class="form-label">Cd</label>
+          <input type="number" class="form-control" id="cd" name="cd">          
+        </div>
+        <button type="submit" value="Cadastrar" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
 </body>
 </html>

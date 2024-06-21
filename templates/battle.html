@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% include 'commom_head.html' %}
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <h1>Battle</h1>
+    <form method="POST" action="/cadastrar">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome"><br><br>
+
+        <label for="vida">Vida:</label>
+        <input type="text" id="vida" name="vida"><br><br>
+
+        <label for="cd">CD:</label>
+        <input type="text" id="cd" name="cd"><br><br>
+
+        <input type="submit" value="Cadastrar">
+    </form>
+</body>
+</html>

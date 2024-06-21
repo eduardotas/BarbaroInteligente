@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <title>Consulta de Personagens</title>
+    {% include 'commom_head.html' %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">    
     <script>
         function confirmarExclusao(id) {
             if (confirm('Tem certeza que deseja excluir este Personagem?')) {
@@ -15,6 +15,7 @@
     </script>
 </head>
 <body>
+    {% include 'navbar.html' %}
     <h1>Consulta de Personagens</h1>
     <table>
         <thead>
